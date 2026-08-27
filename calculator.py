@@ -1,26 +1,29 @@
 def calculator():
     while True:
-        num1 = float(input("Enter first number: "))
-        operator = input("Enter operator (+, -, *, /): ")
-        num2 = float(input("Enter second number: "))
+        try:
+            num1 = float(input("Enter first number: "))
+            operator = input("Enter operator (+, -, *, /): ")
+            num2 = float(input("Enter second number: "))
 
-        if operator == "+":
-            result = num1 + num2
-        elif operator == "-":
-            result = num1 - num2
-        elif operator == "*":
-            result = num1 * num2
-        elif operator == "/":
-            if num2 != 0:
+            if operator == "+":
+                result = num1 + num2
+            elif operator == "-":
+                result = num1 - num2
+            elif operator == "*":
+                result = num1 * num2
+            elif operator == "/":
                 result = num1 / num2
             else:
-                print("Cannot divide by zero.")
+                print("Invalid operator.")
                 continue
-        else:
-            print("Invalid operator.")
-            continue
 
-        print(f"{num1} {operator} {num2} = {result}")
+            print(f"{num1} {operator} {num2} = {result}")
+
+        except ValueError:
+            print("Please enter valid numbers.")
+
+        except ZeroDivisionError:
+            print("Cannot divide by zero.")
 
         again = input("Do you want to calculate again? (y/n): ")
 
